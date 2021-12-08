@@ -1,5 +1,6 @@
 import random
 import numberrandomizer
+import time
 
 def shufflelist(list):
     for index in range(len(list)):
@@ -19,6 +20,9 @@ def bogosort(list):
         shufflelist(list)
 
 list = numberrandomizer.randomizelist(10)
-bogosort(list)
 
-print(list)
+time_start = time.perf_counter()
+bogosort(list)
+time_end = time.perf_counter()
+
+print(f"List: {list}, sorted in {time_end - time_start} seconds")
