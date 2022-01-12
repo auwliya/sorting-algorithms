@@ -19,7 +19,7 @@ def bogosort(list):
     while ordercheck(list) == False:
         shufflelist(list)
 
-list = numberrandomizer.randomizelist(2)
+list = numberrandomizer.randomizelist(10)
 
 time_start = time.perf_counter()
 bogosort(list)
