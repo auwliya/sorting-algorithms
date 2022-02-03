@@ -11,8 +11,8 @@ width = 900
 length = 600
 line_color = [(89, 205, 144)]*151
 color = [(89, 205, 144), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
-fnt = pygame.font.SysFont("comicsans", 30)
-fnt1 = pygame.font.SysFont("comicsans", 20)
+font = pygame.font.SysFont("comicsans", 30)
+font1 = pygame.font.SysFont("comicsans", 20)
 
 def randomizelist():
 	list_sort = []
@@ -24,12 +24,12 @@ list_sort = randomizelist()
 
 def draw():
 	# Text should be rendered
-	txt = fnt.render("PRESS 'ENTER' TO PERFORM SORTING.", 1, (0, 0, 0))
+	txt = font.render("PRESS 'ENTER' TO PERFORM SORTING.", 1, (0, 0, 0))
 	# Position where text is placed
 	screen.blit(txt, (10, 0))
-	txt1 = fnt.render("PRESS 'R' FOR NEW ARRAY.", 1, (0, 0, 0))
+	txt1 = font.render("PRESS 'R' FOR NEW ARRAY.", 1, (0, 0, 0))
 	screen.blit(txt1, (10, 30))
-	txt2 = fnt1.render("ALGORITHM USED: BUBBLE SORT", 1, (0, 0, 0))
+	txt2 = font1.render("ALGORITHM USED: BUBBLE SORT", 1, (0, 0, 0))
 	screen.blit(txt2, (550, 60))
 	element_width =(width-150)//150
 	boundry_arr = 900 / 150
