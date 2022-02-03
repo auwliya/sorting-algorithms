@@ -17,7 +17,7 @@ font1 = pygame.font.SysFont("comicsans", 20)
 def randomizelist():
 	list_sort = []
 	for _ in range(151):
-		list_sort.append(random.randint(0,151))
+		list_sort.append(random.randint(0,100))
 	return list_sort
 
 list_sort = randomizelist()
