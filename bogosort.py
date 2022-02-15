@@ -12,6 +12,7 @@ def shufflelist(list):
 
 #grabs 2 numbers, if number 1 is larger than number 2, returns false
 #if the entire list is sorted it returns true
+
 def ordercheck(list):
     for index in range(len(list) - 1):
         if list[index] > list[index + 1]:

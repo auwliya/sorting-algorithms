@@ -14,23 +14,28 @@ SAMPLE_SIZE = 100
 
 data = [i for i in range(1, SAMPLE_SIZE + 1)]
 random.shuffle(data)
-def swapnumbers(list):
-    for index in range(len(list) - 1):
-        if list[index] > list[index + 1]:
-            list[index], list[index + 1] = list[index + 1], list[index]
+
+def shufflelist(list):
+    for index in range(len(list)):
+        shuffle = random.randint(index,len(list) - 1)
+        temp = list[index]
+        list[index] = list[shuffle]
+        list[shuffle] = temp
     return list
+
 def ordercheck(list):
     for index in range(len(list) - 1):
         if list[index] > list[index + 1]:
             return False
     return True
-def bubblesort(list):
-    while not ordercheck(list):
-        swapnumbers(list)
-        yield list  # NOTE: Dit is eigenlijk een
+
+def bogosort(list):
+    while ordercheck(list) == False:
+        shufflelist(list)
+        yield list
 
 # NOTE: De uitkomst van Yield stoppen we nu steeds in
-generator = bubblesort(data)
+generator = bogosort(data)
 # NOTE: Dit geeft ons een 'figuur' met 'assen' waar we onze balkjes in kunnen plaatsen
 fig, ax = plt.subplots()
 # NOTE: Dit geeft ons balken, over de x-as telt het het aantal elementen over de y as komen de waardes uit de lijst
