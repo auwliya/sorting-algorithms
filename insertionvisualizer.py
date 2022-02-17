@@ -14,6 +14,7 @@ SAMPLE_SIZE = 100
 
 data = [i for i in range(1, SAMPLE_SIZE + 1)]
 random.shuffle(data)
+
 def insertionsort(list):
     for index in range(1, len(list)):
         currentValue = list[index]
@@ -24,6 +25,8 @@ def insertionsort(list):
             currentPosition -= 1
 
         list[currentPosition + 1] = currentValue
+        yield list
+    return list
 
 # NOTE: De uitkomst van Yield stoppen we nu steeds in
 generator = insertionsort(data)
