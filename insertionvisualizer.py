@@ -6,7 +6,7 @@ VALUE_MAX = 1000
 VALUE_MIN = 1
 SAMPLE_SIZE = 100
 
-# Dit is de visualizer van de Le Sort, gemaakt door Lex
+# Dit is de visualizer van de Insertion Sort
 
 # NOTE: Ik heb jullie functie herschreven met een List Comprehension https://www.w3schools.com/python/python_lists_comprehension.asp
 # data = [random.randrange(VALUE_MIN, VALUE_MAX, 1) for i in range(SAMPLE_SIZE)]
@@ -14,33 +14,19 @@ SAMPLE_SIZE = 100
 
 data = [i for i in range(1, SAMPLE_SIZE + 1)]
 random.shuffle(data)
+def insertionsort(list):
+    for index in range(1, len(list)):
+        currentValue = list[index]
+        currentPosition = index - 1
 
-def swapnumbers(list):
-    for index in range(len(list) - 1):
-        if list[index] > list[index + 1]:
-            temp = list[index + 1]
-            list[index] = list[index + 1]
-            list[index] = temp
-        
-        elif list[index] < list[index + 1]:
-            temp = list[index + 1]
-            list[index] = list[index + 1]
-            list[index] = temp   
-    return list         
+        while currentPosition >= 0 and currentValue < list[currentPosition]:
+            list[currentPosition + 1] = list[currentPosition]
+            currentPosition -= 1
 
-def ordercheck(list):
-    for index in range(len(list) - 1):
-        if list[index] > list[index + 1]:
-            return False
-    return True
-
-def lesort(list):
-    while ordercheck(list) == False:
-        swapnumbers(list)
-        yield list
+        list[currentPosition + 1] = currentValue
 
 # NOTE: De uitkomst van Yield stoppen we nu steeds in
-generator = lesort(data)
+generator = insertionsort(data)
 # NOTE: Dit geeft ons een 'figuur' met 'assen' waar we onze balkjes in kunnen plaatsen
 fig, ax = plt.subplots()
 # NOTE: Dit geeft ons balken, over de x-as telt het het aantal elementen over de y as komen de waardes uit de lijst
