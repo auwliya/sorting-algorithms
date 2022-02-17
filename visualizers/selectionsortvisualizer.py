@@ -1,11 +1,10 @@
 from matplotlib.animation import FuncAnimation
 import matplotlib.pyplot as plt
 import random
-import time
 
 VALUE_MAX = 1000
 VALUE_MIN = 1
-SAMPLE_SIZE = 1000
+SAMPLE_SIZE = 100
 
 data = [i for i in range(1, SAMPLE_SIZE + 1)]
 random.shuffle(data)
