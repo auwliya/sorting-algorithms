@@ -27,23 +27,24 @@ def selectionsort(list):
         yield list
     return list
 
-# NOTE: De uitkomst van Yield stoppen we nu steeds in
+# We hebben de code van Lex gebruikt en onze sorting algorithms te visualiseren. Hieronder hebben we de code geïmplementeerd in selectionsort.
+# De uitkomst van Yield stoppen we nu steeds in
 generator = selectionsort(data)
-# NOTE: Dit geeft ons een 'figuur' met 'assen' waar we onze balkjes in kunnen plaatsen
+# Dit geeft ons een 'figuur' met 'assen' waar we onze balkjes in kunnen plaatsen
 fig, ax = plt.subplots()
-# NOTE: Dit geeft ons balken, over de x-as telt het het aantal elementen over de y as komen de waardes uit de lijst
+# Dit geeft ons balken, over de x-as telt het het aantal elementen over de y as komen de waardes uit de lijst
 rects = ax.bar(range(len(data)), data)
-# NOTE: Dit gebruiken we om een teller bij te houden die we in de visualisatie kunnen tonen
+# Dit gebruiken we om een teller bij te houden die we in de visualisatie kunnen tonen
 text = ax.text(0.01, 0.95, "", transform=ax.transAxes)
 iteration = [0]
-# NOTE: Deze functie gaan we gebruiken om stapsgewijs te animeren
+# Deze functie gaan we gebruiken om stapsgewijs te animeren
 
 def animate(A, rects, iteration):
     for rect, val in zip(rects, A):
         rect.set_height(val)
     iteration[0] += 1
     text.set_text("iterations : {}".format(iteration[0]))
-# NOTE: We geven ons figuur mee, verwijzen naar de animatiefunctie, als argumenten moeten de balken en de teller mee, de 'yield'-waarde van de sort functie zijn de stappen/frames van de sortering, interval staat hoog zodat het goed te volgen is, 1 keer animeren is voldoende
+# We geven ons figuur mee, verwijzen naar de animatiefunctie, als argumenten moeten de balken en de teller mee, de 'yield'-waarde van de sort functie zijn de stappen/frames van de sortering, interval staat hoog zodat het goed te volgen is, 1 keer animeren is voldoende
 anim = FuncAnimation(
     fig,
     func=animate,
@@ -52,5 +53,5 @@ anim = FuncAnimation(
     interval=200,
     repeat=False,
 )
-# NOTE: we tonen ons figuur, je kan ook de animatie opslaan met anim.save()
+# We tonen ons figuur, je kan ook de animatie opslaan met anim.save()
 plt.show()
